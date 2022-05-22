@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import chair from "../../assets/images/chair.png";
+import chair from "../../../assets/images/chair.png";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
-import { format } from "date-fns";
+
 const AppoimentBanner = ({ date, setDate }) => {
   return (
     <div class="hero min-h-screen ">
