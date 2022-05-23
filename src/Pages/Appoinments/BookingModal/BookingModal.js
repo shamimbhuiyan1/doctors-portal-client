@@ -27,8 +27,8 @@ const BookingModal = ({ date, treatment, setTreatment }) => {
       patientName: user.displayName,
       phone: e.target.phone.value,
     };
-    console.log(booking);
-
+    /* console.log(booking);
+     */
     fetch("http://localhost:5000/booking", {
       method: "POST",
       headers: {
@@ -38,12 +38,12 @@ const BookingModal = ({ date, treatment, setTreatment }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.success) {
           toast(`Appointment is set, ${formattedDate} at ${slot}`);
         } else {
           toast.error(
-            `Already have and appointment on ${booking?.date} at ${booking?.slot}`
+            `Already have and appointment on ${data.booking?.date} at ${data.booking?.slot}`
           );
         }
         setTreatment(null);
@@ -102,6 +102,7 @@ const BookingModal = ({ date, treatment, setTreatment }) => {
             <input
               type="text"
               name="phone"
+              required
               placeholder="Phone Number"
               className="input input-bordered w-full max-w-xs "
             />
