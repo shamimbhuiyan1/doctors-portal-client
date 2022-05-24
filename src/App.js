@@ -14,6 +14,7 @@ import Navbar from "./Pages/Shared/Navbar";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import MyAppoinments from "./Pages/Dashboard/MyAppoinments";
 import MyReview from "./Pages/Dashboard/MyReview";
+import MyHistory from "./Pages/Dashboard/MyHistory";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
         >
           <Route index element={<MyAppoinments></MyAppoinments>}></Route>
           <Route path="myreview" element={<MyReview></MyReview>}></Route>
+          <Route path="myhistory" element={<MyHistory></MyHistory>}></Route>
         </Route>
       </Routes>
       <ToastContainer />
