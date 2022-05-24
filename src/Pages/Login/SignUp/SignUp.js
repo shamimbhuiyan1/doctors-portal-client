@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
+import useToken from "../../../Hooks/useToken";
 import Loading from "../../Shared/Loading/Loading";
 
 const SignUp = () => {
@@ -22,6 +23,9 @@ const SignUp = () => {
     useCreateUserWithEmailAndPassword(auth);
 
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+  //usetoken custom hooks
+  const [token] = useToken(user || gUser);
 
   const navigate = useNavigate();
 
@@ -41,14 +45,19 @@ const SignUp = () => {
     );
   }
 
-  if (user || gUser) {
-    console.log(user || gUser);
+  if (token) {
+    // console.log(user || gUser);
+
+    //server er shate connect hle niche  navigate badh dibo
+    navigate("/appointment");
   }
 
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
     console.log("update done");
+
+    //server er shate connect hle niche  navigate badh dibo
     navigate("/appointment");
   };
   return (
